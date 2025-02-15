@@ -1,4 +1,4 @@
-package com.mamta.fdcompose
+package com.mamta.fdcompose.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

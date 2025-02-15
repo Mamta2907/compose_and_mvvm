@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FD Compose</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_compose">ComposeActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_scrap_products">ScrapProductsActivity</string>
+</resources>

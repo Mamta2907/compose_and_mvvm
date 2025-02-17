@@ -35,7 +35,6 @@ class RegisterActivity : ComponentActivity() {
 
     private val viewModel: RegisterViewModel by viewModels()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

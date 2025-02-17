@@ -47,7 +47,6 @@ class LoginActivity : ComponentActivity() {
         }
     }
 
-
     @Composable
     private fun LoginScreen(viewModel: LoginViewModel) {
 

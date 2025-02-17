@@ -33,6 +33,7 @@ class NotificationActivity : ComponentActivity() {
         createNotificationChannels()
 
         setContent {
+            //button ui
             NotificationApp()
         }
     }
@@ -78,6 +79,7 @@ fun NotificationApp() {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         Button(onClick = { sendNotification(context, "post_channel", "New Post", "Someone uploaded a new post.") }) {
             Text("Send Post Notification")
         }
@@ -106,7 +108,7 @@ fun sendNotification(context: Context, channelId: String, title: String, message
         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
     val notificationManager = context.getSystemService(NotificationManager::class.java)
-    notificationManager.notify((0..1000).random(), builder.build()) // Random ID to show multiple notifications
+    notificationManager.notify((0..1000).random(), builder.build())
 }
 
 

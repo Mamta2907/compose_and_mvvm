@@ -19,6 +19,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
@@ -43,7 +44,9 @@ import kotlinx.coroutines.flow.StateFlow
 import okhttp3.internal.notify
 
 class EmployeeActivity : ComponentActivity() {
+
     private val viewModel: EmployeeViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -85,14 +88,16 @@ private fun EmployeeData(viewModel: EmployeeViewModel) {
         TextField(
             value = empName,
             onValueChange = { empName = it },
-            label = { Text(text = "Enter Employee Name") })
+            label = { Text(text = "Enter Employee Name") }
+        )
 
         Spacer(modifier = Modifier.height(8.dp))
 
         TextField(
             value = empEmail,
             onValueChange = { empEmail = it },
-            label = { Text(text = "Enter Employee Email") })
+            label = { Text(text = "Enter Employee Email") }
+        )
 
         Spacer(modifier = Modifier.height(8.dp))
 
@@ -135,18 +140,18 @@ private fun EmployeeData(viewModel: EmployeeViewModel) {
         }
 
         Spacer(modifier = Modifier.height(8.dp))
-        Divider(
+
+        HorizontalDivider(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.LightGray)
         )
+
         Spacer(modifier = Modifier.height(8.dp))
 
         TabScreen(getEmpList, getOlderEmp)
 
     }
-
-
 }
 
 @Composable
@@ -159,30 +164,33 @@ fun TabScreen(empList: List<Employee>, olderEmp: List<Employee>) {
     Column(modifier = Modifier.fillMaxWidth()) {
         TabRow(selectedTabIndex = tabIndex) {
             tabs.forEachIndexed { index, title ->
-                Tab(text = { Text(title) },
+                Tab(
+                    text = { Text(title) },
                     selected = tabIndex == index,
                     onClick = { tabIndex = index }
                 )
             }
         }
         when (tabIndex) {
-            0 -> AllEmloyee(empList)
+            0 -> AllEmployee(empList)
             1 -> OlderEmployee(olderEmp)
         }
     }
 }
 
 @Composable
-fun AllEmloyee(empList: List<Employee>) {
+fun AllEmployee(empList: List<Employee>) {
 
-    LazyColumn(modifier = Modifier
-        .fillMaxWidth()
-        .padding(8.dp).padding(8.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .padding(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
         items(empList) {
             Card {
                 Row {
-
                     Column(modifier = Modifier.padding(8.dp)) {
                         Text(text = "Employee Id: ${it.employeeId}")
                         Spacer(modifier = Modifier.height(4.dp))
@@ -201,7 +209,6 @@ fun AllEmloyee(empList: List<Employee>) {
                         Text(text = "Age: ${it.empAge}")
 
                     }
-
                 }
             }
         }
@@ -211,7 +218,13 @@ fun AllEmloyee(empList: List<Employee>) {
 @Composable
 fun OlderEmployee(empList: List<Employee>) {
 
-    LazyColumn(modifier = Modifier.fillMaxWidth().padding(8.dp).padding(8.dp),  verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .padding(8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
         items(empList) {
             Card {
                 Row {
@@ -234,7 +247,6 @@ fun OlderEmployee(empList: List<Employee>) {
                         Text(text = "Age: ${it.empAge}")
 
                     }
-
                 }
             }
         }
